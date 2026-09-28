@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GitHub AI Repo Toolkit</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section id="languageScreen" class="language-screen hidden">
+        <div class="lang-icon">🌐</div>
+        <h1 id="languageHeading">Choose your language</h1>
+        <p id="languageText">
+          The interface and generated AI prompt will use this language.
+        </p>
+        <div id="languageList" class="language-list"></div>
+      </section>
+
+      <section id="mainScreen" class="hidden">
+        <header>
+          <div>
+            <h1 id="appTitle">AI Repo Toolkit</h1>
+            <p id="appSubtitle">Repo links + ready analysis prompt</p>
+          </div>
+          <div class="header-actions">
+            <button
+              id="languageBtn"
+              class="icon-btn"
+              type="button"
+              title="Language"
+            >
+              🌐
+            </button>
+            <span id="serviceCount" class="count"></span>
+          </div>
+        </header>
+
+        <section class="repo-card">
+          <span id="repoLabel" class="label">Repo</span>
+          <strong id="repoName">Detecting GitHub repository…</strong>
+        </section>
+
+        <div class="actions">
+          <button id="copyAll" class="primary" type="button" disabled></button>
+          <button
+            id="copyPrompt"
+            class="secondary"
+            type="button"
+            disabled
+          ></button>
+        </div>
+
+        <section id="services" class="services hidden"></section>
+        <div id="status" class="status"></div>
+      </section>
+    </main>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

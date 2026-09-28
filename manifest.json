@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "GitHub AI Repo Toolkit",
+  "version": "4.0.0",
+  "description": "Generate AI-friendly repo links and localized technical-analysis prompts from GitHub repositories.",
+  "permissions": ["activeTab", "clipboardWrite", "storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "GitHub AI Repo Toolkit"
+  }
+}
