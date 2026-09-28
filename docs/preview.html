@@ -25,6 +25,17 @@
           </div>
           <div class="header-actions">
             <button
+              id="historyBtn"
+              class="icon-btn"
+              type="button"
+              title="History"
+              aria-label="History"
+              aria-expanded="false"
+              aria-controls="historyPanel"
+            >
+              🕘
+            </button>
+            <button
               id="languageBtn"
               class="icon-btn"
               type="button"
@@ -36,6 +47,17 @@
             <span id="serviceCount" class="count"></span>
           </div>
         </header>
+
+        <section id="historyPanel" class="history-panel hidden">
+          <div class="history-heading">
+            <h2 id="historyTitle">History</h2>
+            <button id="clearHistory" class="text-btn" type="button">
+              Clear
+            </button>
+          </div>
+          <p id="emptyHistory" class="history-empty"></p>
+          <ul id="historyList" class="history-list"></ul>
+        </section>
 
         <section class="repo-card">
           <span id="repoLabel" class="label">Repo</span>
@@ -67,7 +89,12 @@
       globalThis.chrome = {
         storage: {
           local: {
-            get: async () => ({ preferredLanguage: "en" }),
+            get: async (key) => ({
+              [key]:
+                key === "preferredLanguage"
+                  ? "en"
+                  : ["https://github.com/openai/codex"],
+            }),
             set: async () => {},
           },
         },
@@ -81,5 +108,8 @@
       });
     </script>
     <script type="module" src="../popup.js"></script>
+    <script type="module">
+      setTimeout(() => document.querySelector("#historyBtn").click(), 100);
+    </script>
   </body>
 </html>

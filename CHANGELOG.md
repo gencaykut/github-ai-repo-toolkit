@@ -9,6 +9,7 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [4.0.0] - 2026-09-28
 
+- Added a local history panel for the last 10 copied GitHub repository URLs.
 - Added MIT licensing and open-source project documentation.
 - Added repository URL validation and automated tests.
 - Removed dynamic `innerHTML` usage from popup rendering.

@@ -38,6 +38,18 @@ not use a private or sensitive repository during testing.
 6. Confirm that each prompt contains the canonical GitHub URL and all five current service links.
 7. Search the copied prompt for `undefined`, `[object Object]`, or missing URLs.
 
+## Repository history
+
+1. Copy one service link and open the history panel from the clock button.
+2. Confirm that the list contains only the canonical `https://github.com/owner/repository` URL.
+3. Copy the complete link list and prompt; confirm that they do not create duplicate history entries.
+4. Repeat with another public repository and confirm that the newest URL appears first.
+5. Copy a repository URL from history and verify the clipboard contents.
+6. Open a repository from history and verify that Chrome navigates to its GitHub URL.
+7. Add more than 10 public test repositories and confirm that only the newest 10 remain.
+8. Select **Clear** and confirm that the list becomes empty.
+9. Close and reopen Chrome and verify that uncleared history persists locally.
+
 ## Privacy and accessibility
 
 1. Confirm that the public-repository warning is visible before the action buttons.

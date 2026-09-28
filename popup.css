@@ -62,6 +62,62 @@ p {
 .icon-btn:hover {
   background: #161b22;
 }
+.history-panel {
+  margin-bottom: 12px;
+  padding: 11px;
+  border: 1px solid #30363d;
+  border-radius: 9px;
+  background: #161b22;
+}
+.history-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.history-heading h2 {
+  margin: 0;
+  font-size: 13px;
+}
+.text-btn {
+  border: 0;
+  padding: 2px 4px;
+  background: transparent;
+  color: #79c0ff;
+  font-size: 11px;
+  cursor: pointer;
+}
+.text-btn:disabled {
+  color: #6e7681;
+  cursor: default;
+}
+.history-empty {
+  padding: 4px 0;
+  font-size: 11px;
+}
+.history-list {
+  display: grid;
+  gap: 6px;
+  max-height: 176px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+.history-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 6px;
+}
+.history-url {
+  color: #8b949e;
+  font-size: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .repo-card {
   padding: 11px 12px;
   border: 1px solid #30363d;

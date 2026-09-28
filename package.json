@@ -5,7 +5,7 @@
   "description": "Chrome extension that creates AI-friendly links and analysis prompts for GitHub repositories.",
   "type": "module",
   "scripts": {
-    "check": "node --check popup.js && node --check i18n.js && node --check repo-url.js && node --check services.js",
+    "check": "node --check popup.js && node --check history.js && node --check i18n.js && node --check repo-url.js && node --check services.js",
     "test": "node --test",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

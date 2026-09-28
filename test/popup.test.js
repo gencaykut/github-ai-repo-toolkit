@@ -15,6 +15,7 @@ test("popup initializes, localizes, copies, and reports clipboard errors", async
   const clipboardWrites = [];
   const createdTabs = [];
   const storageWrites = [];
+  const storageData = { preferredLanguage: "en" };
   let rejectClipboard = false;
 
   globalThis.window = dom.window;
@@ -35,11 +36,12 @@ test("popup initializes, localizes, copies, and reports clipboard errors", async
   globalThis.chrome = {
     storage: {
       local: {
-        async get() {
-          return { preferredLanguage: "en" };
+        async get(key) {
+          return { [key]: storageData[key] };
         },
         async set(value) {
           storageWrites.push(value);
+          Object.assign(storageData, value);
         },
       },
     },
@@ -78,11 +80,35 @@ test("popup initializes, localizes, copies, and reports clipboard errors", async
     document.querySelector("#copyAll").click();
     await flushTasks();
     assert.equal(clipboardWrites.at(-1).split("\n").length, 5);
+    assert.deepEqual(storageData.repositoryHistory, [
+      "https://github.com/openai/codex",
+    ]);
+
+    document.querySelector("#historyBtn").click();
+    await flushTasks();
+    assert.equal(
+      document.querySelector("#historyBtn").getAttribute("aria-expanded"),
+      "true",
+    );
+    assert.equal(document.querySelectorAll(".history-item").length, 1);
+    assert.equal(
+      document.querySelector(".history-url").textContent,
+      "https://github.com/openai/codex",
+    );
+
+    document.querySelector(".history-item .small-btn").click();
+    await flushTasks();
+    assert.equal(clipboardWrites.at(-1), "https://github.com/openai/codex");
 
     document.querySelector("#copyPrompt").click();
     await flushTasks();
     assert.match(clipboardWrites.at(-1), /GitIngest: https:\/\/gitingest\.com/);
     assert.match(clipboardWrites.at(-1), /GitMCP: https:\/\/gitmcp\.io/);
+
+    document.querySelector("#clearHistory").click();
+    await flushTasks();
+    assert.deepEqual(storageData.repositoryHistory, []);
+    assert.equal(document.querySelectorAll(".history-item").length, 0);
 
     document.querySelector(".service .small-btn:last-child").click();
     assert.deepEqual(createdTabs.at(-1), {

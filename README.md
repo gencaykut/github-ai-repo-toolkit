@@ -24,7 +24,8 @@ locally in the popup.
 - Copies all generated links at once or one at a time.
 - Creates a localized technical-analysis prompt with all generated sources.
 - Supports Turkish, English, German, Spanish, and French.
-- Stores only the selected language in Chrome's local extension storage.
+- Keeps a local, deduplicated history of the last 10 copied repository URLs.
+- Lets users copy, open, or clear repository history from the popup.
 - Includes keyboard navigation, focus indicators, and screen-reader status updates.
 
 ## Installation
@@ -53,12 +54,16 @@ For `https://github.com/IRISX-AI/IRIS-AI`, the extension generates:
 | ---------------- | ---------------------------------------------------- |
 | `activeTab`      | Read the URL of the GitHub tab when the popup opens. |
 | `clipboardWrite` | Copy generated links and prompts to the clipboard.   |
-| `storage`        | Save the user's language preference locally.         |
+| `storage`        | Save language preference and repository URL history. |
 
 The extension does not run in the background and does not collect analytics,
-credentials, repository contents, or browsing history. It contacts no external
-service on its own. When you choose **Open** for a generated link, your browser
-navigates to that third-party service and its own privacy terms apply.
+credentials, repository contents, or general browsing history. It contacts no
+external service on its own. When you choose **Open** for a generated link, your
+browser navigates to that third-party service and its own privacy terms apply.
+
+Copying a generated service link, the complete link list, or the analysis prompt
+stores only that repository's canonical GitHub URL in local extension storage.
+The history is limited to 10 unique URLs and can be cleared from the popup.
 
 Use the extension only with repositories whose names are safe to disclose.
 Opening a generated link shares the repository owner and name with the selected
@@ -93,6 +98,7 @@ release, follow [MANUAL_TESTING.md](MANUAL_TESTING.md).
 - Only `github.com` and `www.github.com` repository URLs are supported. GitHub Enterprise hosts are not supported.
 - The extension generates URLs but does not verify whether a repository or third-party service page exists.
 - Availability and behavior of third-party services can change independently of this project.
+- Repository history is local to the current Chrome profile and is not synced by the extension.
 
 ## License
 

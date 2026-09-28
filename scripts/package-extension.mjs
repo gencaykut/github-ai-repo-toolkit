@@ -16,6 +16,7 @@ const runtimeFiles = [
   "popup.html",
   "popup.css",
   "popup.js",
+  "history.js",
   "i18n.js",
   "repo-url.js",
   "services.js",
