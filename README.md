@@ -1,5 +1,13 @@
 # GitHub AI Repo Toolkit
 
+<p align="center">
+  <img src="assets/icons/icon-128.png" width="128" alt="GitHub AI Repo Toolkit icon">
+</p>
+
+[![CI](https://github.com/gencaykut/github-ai-repo-toolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/gencaykut/github-ai-repo-toolkit/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Manifest V3](https://img.shields.io/badge/Chrome-Manifest%20V3-4285F4)](manifest.json)
+
 A lightweight Chrome extension that turns the GitHub repository in your active
 tab into a set of AI-friendly links and a ready-to-use technical analysis
 prompt.
@@ -8,6 +16,8 @@ The extension does **not** analyze repositories itself, upload repository
 contents, or call an AI model. Link generation and prompt creation happen
 locally in the popup.
 
+![GitHub AI Repo Toolkit popup](docs/popup-preview.png)
+
 ## Features
 
 - Generates repository links for GitIngest, GitDiagram, uithub, DeepWiki, and GitMCP.
@@ -15,6 +25,7 @@ locally in the popup.
 - Creates a localized technical-analysis prompt with all generated sources.
 - Supports Turkish, English, German, Spanish, and French.
 - Stores only the selected language in Chrome's local extension storage.
+- Includes keyboard navigation, focus indicators, and screen-reader status updates.
 
 ## Installation
 
@@ -49,6 +60,10 @@ credentials, repository contents, or browsing history. It contacts no external
 service on its own. When you choose **Open** for a generated link, your browser
 navigates to that third-party service and its own privacy terms apply.
 
+Use the extension only with repositories whose names are safe to disclose.
+Opening a generated link shares the repository owner and name with the selected
+third-party service. The popup displays this warning before the service links.
+
 GitIngest, GitDiagram, uithub, DeepWiki, GitMCP, GitHub, and Chrome are
 third-party products or trademarks. This project is not affiliated with or
 endorsed by their owners.
@@ -63,10 +78,15 @@ npm install
 npm test
 npm run check
 npm run format:check
+npm run package
 ```
 
+The package command creates a release-ready ZIP in `dist/` containing only the
+runtime extension files.
+
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines and
-[SECURITY.md](SECURITY.md) for responsible vulnerability reporting.
+[SECURITY.md](SECURITY.md) for responsible vulnerability reporting. Before a
+release, follow [MANUAL_TESTING.md](MANUAL_TESTING.md).
 
 ## Known limitations
 

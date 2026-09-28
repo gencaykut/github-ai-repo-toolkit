@@ -89,6 +89,20 @@ p {
 button {
   font: inherit;
 }
+button:focus-visible {
+  outline: 3px solid #f0f6fc;
+  outline-offset: 2px;
+}
+.privacy-notice {
+  margin: -2px 0 12px;
+  padding: 9px 10px;
+  border: 1px solid #9e6a03;
+  border-radius: 8px;
+  background: #9e6a031f;
+  color: #e3b341;
+  font-size: 11px;
+  line-height: 1.4;
+}
 .primary,
 .secondary {
   width: 100%;
@@ -223,4 +237,14 @@ button {
 .lang-option span {
   color: #8b949e;
   font-size: 10px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

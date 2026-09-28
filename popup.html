@@ -29,6 +29,7 @@
               class="icon-btn"
               type="button"
               title="Language"
+              aria-label="Language"
             >
               🌐
             </button>
@@ -41,6 +42,8 @@
           <strong id="repoName">Detecting GitHub repository…</strong>
         </section>
 
+        <p id="privacyNotice" class="privacy-notice" role="note"></p>
+
         <div class="actions">
           <button id="copyAll" class="primary" type="button" disabled></button>
           <button
@@ -51,8 +54,12 @@
           ></button>
         </div>
 
-        <section id="services" class="services hidden"></section>
-        <div id="status" class="status"></div>
+        <section
+          id="services"
+          class="services hidden"
+          aria-label="Services"
+        ></section>
+        <div id="status" class="status" role="status" aria-live="polite"></div>
       </section>
     </main>
     <script type="module" src="popup.js"></script>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GitHub AI Repo Toolkit Preview</title>
+    <link rel="stylesheet" href="../popup.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section id="languageScreen" class="language-screen hidden">
+        <div class="lang-icon">🌐</div>
+        <h1 id="languageHeading">Choose your language</h1>
+        <p id="languageText">
+          The interface and generated AI prompt will use this language.
+        </p>
+        <div id="languageList" class="language-list"></div>
+      </section>
+
+      <section id="mainScreen" class="hidden">
+        <header>
+          <div>
+            <h1 id="appTitle">AI Repo Toolkit</h1>
+            <p id="appSubtitle">Repo links + ready analysis prompt</p>
+          </div>
+          <div class="header-actions">
+            <button
+              id="languageBtn"
+              class="icon-btn"
+              type="button"
+              title="Language"
+              aria-label="Language"
+            >
+              🌐
+            </button>
+            <span id="serviceCount" class="count"></span>
+          </div>
+        </header>
+
+        <section class="repo-card">
+          <span id="repoLabel" class="label">Repo</span>
+          <strong id="repoName">Detecting GitHub repository…</strong>
+        </section>
+
+        <p id="privacyNotice" class="privacy-notice" role="note"></p>
+
+        <div class="actions">
+          <button id="copyAll" class="primary" type="button" disabled></button>
+          <button
+            id="copyPrompt"
+            class="secondary"
+            type="button"
+            disabled
+          ></button>
+        </div>
+
+        <section
+          id="services"
+          class="services hidden"
+          aria-label="Services"
+        ></section>
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script>
+      globalThis.chrome = {
+        storage: {
+          local: {
+            get: async () => ({ preferredLanguage: "en" }),
+            set: async () => {},
+          },
+        },
+        tabs: {
+          query: async () => [{ url: "https://github.com/IRISX-AI/IRIS-AI" }],
+          create: () => {},
+        },
+      };
+      Object.defineProperty(navigator, "clipboard", {
+        value: { writeText: async () => {} },
+      });
+    </script>
+    <script type="module" src="../popup.js"></script>
+  </body>
+</html>
